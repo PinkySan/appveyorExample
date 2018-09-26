@@ -17,7 +17,6 @@ Example for the usage of appveyor
     - [ ] conan muss zuvor installiert werden (über *pip*)
     - [ ] conan muss gtest herunterladen
 
-
 ### Status
 Branch|status
 ----|----
