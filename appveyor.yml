@@ -1,1 +1,12 @@
 image: Visual Studio 2017
+
+clone_folder:
+  c:\projects\source
+
+build_script:
+  cd c:\projects\source
+  mkdir build
+  cd build
+  cmake .. -G "Visual Studio 15 2017 WIN64"
+  cmake --build . --config "Debug"
+  cmake --build . --config "Release"
