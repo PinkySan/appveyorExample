@@ -5,8 +5,13 @@ clone_folder:
 
 build_script:
   cd c:\projects\source
+
   mkdir build
+
   cd build
+
   cmake .. -G "Visual Studio 15 2017 WIN64"
+
   cmake --build . --config "Debug"
+  
   cmake --build . --config "Release"
