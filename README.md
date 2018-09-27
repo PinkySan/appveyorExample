@@ -17,7 +17,7 @@ Example for the usage of appveyor
 - [ ] conan muss vor dem bauen der Tests im appveyor über conan installiert werden
     - [ ] conan muss zuvor installiert werden (über *pip*)
     - [ ] conan muss gtest herunterladen
-- [] Linux und Windows bauen
+- [ ] Linux und Windows bauen
 
 ### Status
 Branch|status
