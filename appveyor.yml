@@ -10,5 +10,3 @@ build_script:
 ## installing
 artifacts:
   - path: install
-  - name: pkgHello_%configuration%
-  - type: zip
