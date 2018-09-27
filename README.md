@@ -10,12 +10,14 @@ Example for the usage of appveyor
 
 ## TODO
 
-- [ ] installation
+- [x] installation - 'cmake --build . --target INSTALL'
+- [ ] Installationspaket zur Verfügung stellen
 - [ ] test erstellen
 - [ ] test auf basis von gtest
 - [ ] conan muss vor dem bauen der Tests im appveyor über conan installiert werden
     - [ ] conan muss zuvor installiert werden (über *pip*)
     - [ ] conan muss gtest herunterladen
+- [] Linux und Windows bauen
 
 ### Status
 Branch|status

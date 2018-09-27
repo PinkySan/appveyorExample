@@ -4,8 +4,11 @@ configuration:
 
 image: Visual Studio 2017
 
-#clone_folder:
-#  c:\projects\source
-
 build_script:
   - CALL build.bat
+
+## installing
+artifacts:
+  - path: install
+  - name: pkgHello_%configuration%
+  - type: zip
