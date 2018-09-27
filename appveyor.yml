@@ -9,4 +9,5 @@ build_script:
 
 ## installing
 artifacts:
+
   - path: install
