@@ -5,16 +5,12 @@ configuration:
 platform:
     - x64
 
-image: 
-    - Visual Studio 2017
-    - Ubuntu
-
 environment:
-    matrix:
-      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-        generator="Visual Studio 15 2017 Win64"
-      - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu
-        generator="Unix Makefiles"
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      generator: "Visual Studio 15 2017 Win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu
+      generator: "Unix Makefiles"
     
 matrix:
   fast_finish: false
