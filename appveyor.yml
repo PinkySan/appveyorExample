@@ -1,15 +1,14 @@
 configuration:
-  - Debug
-  - Release
+    - Debug
+    - Release
 
 image: Visual Studio 2017
 
 build_script:
-  - CALL build.bat
+    - CALL build.bat
 
 ## installing
 artifacts:
-
-  - path: install
-    name: pkgHello
-    type: zip
+    - path: install
+      name: pkgHello
+      type: zip
