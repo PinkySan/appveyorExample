@@ -11,8 +11,10 @@ image:
 
 init:
     - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" ( set generator="Visual Studio 15 2017%arch%" )
-    - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Ubuntu" ( set generator="Unix Makefiles"
-
+    - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Ubuntu" ( set generator="Unix Makefiles")
+    
+matrix:
+  fast_finish: true
 
 before_build:
     - cmd: |-
