@@ -10,20 +10,23 @@ image:
     - Ubuntu
 
 init:
-    - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" ( set generator="Visual Studio 15 2017%arch%" )
-    - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Ubuntu" ( set generator="Unix Makefiles")
+- cmd: set generator="Visual Studio 15 2017 Win64"
+- sh: export generator="Unix Makefiles"
     
 matrix:
-  fast_finish: true
+  fast_finish: false
 
+# Prefix command with cmd: to run it on Windows image only:
+# Prefix command with sh: to run it on Linux image only:
+# Do not prefix command to run it on both Windows and Linux. You have to make sure the command is good for both Windows batch files and Bash:
+# https://www.appveyor.com/docs/getting-started-with-appveyor-for-linux/
 before_build:
-    - cmd: |-
-        mkdir build
-        cd build
+    - mkdir build
+    - cd build
+
 build_script:
-    - cmd: |-
-        cmake .. -G %generator% -DCMAKE_INSTALL_PREFIX="../install"
-        cmake --build . --target INSTALL --config %configuration%
+    - cmake .. -G %generator% -DCMAKE_INSTALL_PREFIX="../install"
+    - cmake --build . --target INSTALL --config %configuration%
 
 ## installing
 artifacts:
