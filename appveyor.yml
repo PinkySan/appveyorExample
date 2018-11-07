@@ -29,7 +29,7 @@ build_script:
         cmake --build . --target INSTALL --config %configuration%
     - sh: |-
         cmake .. -G "$generator" -DCMAKE_INSTALL_PREFIX="../install"
-        cmake --build . --target INSTALL --config "$configuration"
+        cmake --build . --target install --config "$configuration"
 
 ## installing
 artifacts:
