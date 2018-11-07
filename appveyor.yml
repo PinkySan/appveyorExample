@@ -25,9 +25,11 @@ before_build:
 
 build_script:
     - cmd: |-
+        echo "%generator%" - "%configuration%"
         cmake .. -G "%generator%" -DCMAKE_INSTALL_PREFIX="../install"
         cmake --build . --target INSTALL --config "%configuration%"
     - sh: |-
+        echo "$generator" - "$configuration"
         cmake .. -G "$generator" -DCMAKE_INSTALL_PREFIX="../install"
         cmake --build . --target install --config "$configuration"
 
