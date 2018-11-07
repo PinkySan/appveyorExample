@@ -24,8 +24,7 @@ before_build:
     - cd build
 
 build_script:
-    -cmd: cmake .. -G %generator% -DCMAKE_INSTALL_PREFIX="../install"
-    -sh: cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="../install"
+    - cmake .. -G %generator% -DCMAKE_INSTALL_PREFIX="../install"
     - cmake --build . --target INSTALL --config %configuration%
 
 ## installing
