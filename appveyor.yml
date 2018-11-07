@@ -8,7 +8,7 @@ platform:
 environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      generator: "\"Visual Studio 15 2017 Win64\""
+      generator: "Visual Studio 15 2017 Win64"
     - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu
       generator: "Unix Makefiles"
     
@@ -25,8 +25,8 @@ before_build:
 
 build_script:
     - cmd: |-
-        cmake .. -G %generator% -DCMAKE_INSTALL_PREFIX="../install"
-        cmake --build . --target INSTALL --config %configuration%
+        cmake .. -G "%generator%" -DCMAKE_INSTALL_PREFIX="../install"
+        cmake --build . --target INSTALL --config "%configuration%"
     - sh: |-
         cmake .. -G "$generator" -DCMAKE_INSTALL_PREFIX="../install"
         cmake --build . --target install --config "$configuration"
