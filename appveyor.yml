@@ -32,8 +32,11 @@ build_script:
         echo $generator - $configuration
         cmake .. -G "$generator" -DCMAKE_INSTALL_PREFIX="../install"
         cmake --build . --target install --config "$configuration"
+# testing
+test_script:
+    - ctest
 
-## installing
+# installing
 artifacts:
     - path: install
       name: pkgHello
