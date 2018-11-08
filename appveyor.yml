@@ -13,7 +13,13 @@ environment:
       generator: "Unix Makefiles"
     
 matrix:
-  fast_finish: false
+    fast_finish: false
+
+init:
+    - pip3 install conan
+    - conan remote add conan-center https://bintray.com/conan/conan-center
+    - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
+
 
 # Prefix command with cmd: to run it on Windows image only:
 # Prefix command with sh: to run it on Linux image only:
@@ -22,6 +28,7 @@ matrix:
 before_build:
     - mkdir build
     - cd build
+    - conan install ..
 
 build_script:
     - cmd: |-
@@ -32,6 +39,7 @@ build_script:
         echo $generator - $configuration
         cmake .. -G "$generator" -DCMAKE_INSTALL_PREFIX="../install"
         cmake --build . --target install --config "$configuration"
+    
 # testing
 test_script:
     - ctest
