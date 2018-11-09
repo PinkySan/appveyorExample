@@ -1,2 +1,0 @@
-void sayHello();
-int returnValue();
