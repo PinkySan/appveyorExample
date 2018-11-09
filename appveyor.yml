@@ -17,7 +17,9 @@ matrix:
 
 init:
     - cmd: pip install conan
-    - sh: sudo pip install conan
+    - sh: |-
+        sudo pip install conan
+        sudo apt install libpthread-stubs0-dev
     - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
 
 
