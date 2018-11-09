@@ -1,11 +1,7 @@
 #include <gtest/gtest.h>
+#include <hello.h>
 
 TEST(first, success)
 {
-    EXPECT_EQ(1,1);
-}
-
-TEST(first, fail)
-{
-    EXPECT_EQ(1,0);
+    EXPECT_EQ(returnValue(),42);
 }

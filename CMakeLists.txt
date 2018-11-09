@@ -5,6 +5,7 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_set_find_paths()
 
 add_library(HelloWorld STATIC hello.h hello.cpp)
+target_include_directories(HelloWorld PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 set_target_properties(HelloWorld PROPERTIES PUBLIC_HEADER hello.h)
 
 install(TARGETS HelloWorld 

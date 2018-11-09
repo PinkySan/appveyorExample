@@ -1,1 +1,2 @@
 void sayHello();
+int returnValue();
