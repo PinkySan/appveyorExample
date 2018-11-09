@@ -42,7 +42,8 @@ build_script:
     
 # testing
 test_script:
-    - ctest
+    - cmd: ctest --build-config  %configuration% -VV
+    - sh: ctest --build-config  $configuration -VV
 
 # installing
 artifacts:
