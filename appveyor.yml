@@ -29,7 +29,7 @@ before_build:
     - mkdir build
     - cd build
     - cmd: conan install .. -s build_type=%configuration%
-    - sh: conan install .. -s build_type=Debug
+    - sh: conan install .. -s build_type=$configuration -s compiler.libcxx=libstdc++11
 
 build_script:
     - cmd: |-
