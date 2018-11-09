@@ -9,7 +9,7 @@ environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       generator: "Visual Studio 15 2017 Win64"
-    - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu
+    - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
       generator: "Unix Makefiles"
     
 matrix:
@@ -17,9 +17,7 @@ matrix:
 
 init:
     - cmd: pip install conan
-    - sh: |-
-        sudo pip install conan
-        sudo apt install libpthread-stubs0-dev
+    - sh: sudo pip install conan
     - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
 
 
