@@ -15,8 +15,10 @@ environment:
 matrix:
     fast_finish: true
   
+# fix the init-problem
 init: 
-  - pip install conan
+  - cmd: pip install conan
+  - sh: sudo pip install conan
   - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
 
 before_build:
@@ -27,4 +29,7 @@ before_build:
 build_script:
   - ps: |-
       cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install"
-      cmake --build . --target install --config "$env:CONFIGURATION" --parallel 4
+      cmake --build . --target install --config $env:CONFIGURATION --parallel 4
+
+test_script:
+  - ps: ctest --build-config $env:CONFIGURATION -VV
