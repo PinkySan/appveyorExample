@@ -11,9 +11,6 @@ environment:
       GENERATOR: "Visual Studio 15 2017 Win64"
     - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
       GENERATOR: "Unix Makefiles"
-    
-matrix:
-    fast_finish: true
   
 # fix the init-problem
 init: 
