@@ -24,7 +24,7 @@ before_build:
   - ps: conan install .. -s build_type=$env:CONFIGURATION
 
 build_script:
-  - ps: cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install" -DCMAKE_BUILD_TYPE=$env:CONFIGURATION
+  - ps: cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install"
   - ps: cmake --build . --target install --config $env:CONFIGURATION --parallel 4
 
 test_script:
