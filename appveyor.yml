@@ -14,6 +14,10 @@ environment:
     
 matrix:
     fast_finish: true
+  
+before_build:
+  - mkdir build
+  - cd build
 
 build_script:
     - ps: |-
