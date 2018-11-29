@@ -9,8 +9,8 @@ environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       GENERATOR: "Visual Studio 15 2017 Win64"
-    # - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
-    #   GENERATOR: "Unix Makefiles"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
+      GENERATOR: "Unix Makefiles"
     
 matrix:
     fast_finish: true
@@ -27,9 +27,8 @@ before_build:
   - ps: conan install .. -s build_type=$env:CONFIGURATION
 
 build_script:
-  - ps: |-
-      cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install"
-      cmake --build . --target install --config $env:CONFIGURATION --parallel 4
+  - ps: cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install"
+  - ps: cmake --build . --target install --config $env:CONFIGURATION --parallel 4
 
 test_script:
   - ps: ctest --build-config $env:CONFIGURATION -VV
