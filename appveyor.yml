@@ -17,4 +17,4 @@ matrix:
 
 build_script:
     - ps: |-
-        cmake .. -G "$env:generator%" -DCMAKE_INSTALL_PREFIX="../install"
+        cmake .. -G "$env:generator" -DCMAKE_INSTALL_PREFIX="../install"
