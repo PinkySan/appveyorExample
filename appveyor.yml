@@ -19,7 +19,6 @@ matrix:
 init: 
   - cmd: pip install conan
   - sh: sudo pip install conan
-  - sh: sudo apt install build-essential
   - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
 
 before_build:
