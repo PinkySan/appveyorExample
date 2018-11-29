@@ -15,11 +15,16 @@ environment:
 matrix:
     fast_finish: true
   
+init: 
+  - pip install conan
+  - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
+
 before_build:
   - mkdir build
   - cd build
+  - ps: conan install .. -s build_type=$env:CONFIGURATION
 
 build_script:
-    - ps: |-
-        cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install"
-        cmake --build . --target install --config "$env:CONFIGURATION" --parallel 4
+  - ps: |-
+      cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install"
+      cmake --build . --target install --config "$env:CONFIGURATION" --parallel 4
