@@ -34,4 +34,4 @@ test_script:
 after_test:
   - cd test
   - ps: $wc = New-Object 'System.Net.WebClient'
-  - ps: Get-ChildItem -Path ./ -Filter *.xml -File -Name -Recurse | ForEach-Object {$wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $_))}
+  - ps: Get-ChildItem -Path ./ -Filter *.xml -File -Name -Recurse | ForEach-Object {echo $_}
