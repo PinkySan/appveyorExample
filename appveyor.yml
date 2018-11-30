@@ -22,7 +22,7 @@ init:
 before_build:
   - mkdir build
   - cd build
-  - conan install .. -s build_type=$env:CONFIGURATION "$env:CONAN_SETTINGS"
+  - conan install .. -s build_type=$env:CONFIGURATION $env:CONAN_SETTINGS
 
 build_script:
   - ps: cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install"
