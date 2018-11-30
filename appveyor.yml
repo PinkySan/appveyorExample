@@ -8,46 +8,25 @@ platform:
 environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      generator: "Visual Studio 15 2017 Win64"
-#    - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
-#      generator: "Unix Makefiles"
-    
-matrix:
-    fast_finish: true
+      GENERATOR: "Visual Studio 15 2017 Win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
+      GENERATOR: "Unix Makefiles"
+  
+# fix the init-problem
+init: 
+  - cmd: pip install conan
+  - sh: sudo pip install conan
+  - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
 
-init:
-    - cmd: pip install conan
-    - sh: sudo pip install conan
-    - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
-
-
-# Prefix command with cmd: to run it on Windows image only:
-# Prefix command with sh: to run it on Linux image only:
-# Do not prefix command to run it on both Windows and Linux. You have to make sure the command is good for both Windows batch files and Bash:
-# https://www.appveyor.com/docs/getting-started-with-appveyor-for-linux/
 before_build:
-    - mkdir build
-    - cd build
-    - cmd: conan install .. -s build_type=%configuration%
-    - sh: conan install .. -s build_type=$configuration
-
+  - mkdir build
+  - cd build
+  - cmd: conan install .. -s build_type=%CONFIGURATION%
+  - sh: conan install .. -s build_type=$CONFIGURATION -s compiler.libcxx=libstdc++11
+  
 build_script:
-    - cmd: |-
-        echo %generator% - %configuration%
-        cmake .. -G "%generator%" -DCMAKE_INSTALL_PREFIX="../install"
-        cmake --build . --target INSTALL --config "%configuration%"
-    - sh: |-
-        echo $generator - $configuration
-        cmake .. -G "$generator" -DCMAKE_INSTALL_PREFIX="../install"
-        cmake --build . --target install --config "$configuration"
-    
-# testing
-test_script:
-    - cmd: ctest --build-config  %configuration% -VV
-    - sh: ctest --build-config  $configuration -VV
+  - ps: cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install"
+  - ps: cmake --build . --target install --config "$env:CONFIGURATION" --parallel 4
 
-# installing
-artifacts:
-    - path: install
-      name: pkgHello
-      type: zip
+test_script:
+  - ps: ctest --build-config "$env:CONFIGURATION" -VV
