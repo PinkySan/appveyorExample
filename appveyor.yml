@@ -7,10 +7,11 @@ platform:
 
 environment:
   matrix:
-    #- APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    #  GENERATOR: "Visual Studio 15 2017 Win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      GENERATOR: "Visual Studio 15 2017 Win64"
     - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
       GENERATOR: "Unix Makefiles"
+      CONAN_SETTINGS: "-s compiler.libcxx=libstdc++11"
   
 # fix the init-problem
 init: 
@@ -21,7 +22,7 @@ init:
 before_build:
   - mkdir build
   - cd build
-  - ps: conan install .. -s build_type=$env:CONFIGURATION -s compiler.libcxx=libstdc++11
+  - conan install .. -s build_type=$env:CONFIGURATION "$env:CONAN_SETTINGS"
 
 build_script:
   - ps: cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install"
