@@ -30,3 +30,7 @@ build_script:
 
 test_script:
   - ps: ctest --build-config "$env:CONFIGURATION" -VV
+
+after_test:
+  - ps: $wc = New-Object 'System.Net.WebClient'
+  - ps: $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path ./test/helloTest.xml))
