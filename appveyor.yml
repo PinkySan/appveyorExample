@@ -21,12 +21,12 @@ init:
 before_build:
   - mkdir build
   - cd build
-  - cmd: conan install .. -s build_type=$env:CONFIGURATION
-  - sh: conan install .. -s build_type=$env:CONFIGURATION -s compiler.libcxx=libstdc++11
+  - cmd: conan install .. -s build_type="$env:CONFIGURATION"
+  - sh: conan install .. -s build_type="$env:CONFIGURATION" -s compiler.libcxx=libstdc++11
 
 build_script:
   - ps: cmake .. -G "$env:GENERATOR" -DCMAKE_INSTALL_PREFIX="../install"
-  - ps: cmake --build . --target install --config $env:CONFIGURATION --parallel 4
+  - ps: cmake --build . --target install --config "$env:CONFIGURATION" --parallel 4
 
 test_script:
-  - ps: ctest --build-config $env:CONFIGURATION -VV
+  - ps: ctest --build-config "$env:CONFIGURATION" -VV
