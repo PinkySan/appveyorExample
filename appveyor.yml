@@ -29,7 +29,7 @@ build_script:
   - ps: cmake --build . --target install --config "$env:CONFIGURATION" --parallel 4
 
 test_script:
-  - ps: ctest --build-config "$env:CONFIGURATION" -VV -T test
+  - ps: ctest --build-config "$env:CONFIGURATION" -VV
 
 after_test:
   - ps: $wc = New-Object 'System.Net.WebClient'
