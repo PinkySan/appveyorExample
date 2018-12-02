@@ -12,12 +12,12 @@ Example for the usage of appveyor
 
 - [x] installation - *cmake --build . --target INSTALL*
 - [x] Installationspaket zur Verfügung stellen - Heureka
-- [ ] test erstellen
-- [ ] test auf basis von gtest
-- [ ] conan muss vor dem bauen der Tests im appveyor über conan installiert werden
-    - [ ] conan muss zuvor installiert werden (über *pip*)
-    - [ ] conan muss gtest herunterladen
-- [x] Linux und Windows bauen - _aber nicht wirklich schöne Lösung_
+- [x] test erstellen
+- [x] test auf basis von gtest
+- [x] conan muss vor dem bauen der Tests im appveyor über conan installiert werden
+    - [x] conan muss zuvor installiert werden (über *pip*)
+    - [x] conan muss gtest herunterladen
+- [x] Linux und Windows bauen
 
 ### Status
 Branch|status
