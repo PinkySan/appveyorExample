@@ -31,3 +31,4 @@ Master|Link
 Debug| [Download](https://ci.appveyor.com/api/projects/PinkySan/appveyorExample/artifacts/pkgHello.zip?job=Configuration%3A+Debug)
 Release| [Download](https://ci.appveyor.com/api/projects/PinkySan/appveyorExample/artifacts/pkgHello.zip?job=Configuration%3A+Release)
 
+Test for Wolfgang   
