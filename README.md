@@ -1,5 +1,5 @@
 # appveyorExample
-Example for the usage of appveyor
+Example for the usage of appveyor. It is awesome
 
 
 ## Vorgehensweise
