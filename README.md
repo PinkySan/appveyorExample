@@ -22,7 +22,7 @@ Example for the usage of appveyor. It is awesome
 ### Status
 Branch|status
 ----|----
-master | <img src=https://ci.appveyor.com/api/projects/status/github/PinkySan/appveyorExample>
+master | [![Build status](https://ci.appveyor.com/api/projects/status/960mgtdgpo14mdj3/branch/master?svg=true)](https://ci.appveyor.com/project/PinkySan/appveyorexample/branch/master)
 
 ### Download
 
