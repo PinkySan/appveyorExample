@@ -1,9 +1,10 @@
-# appveyorExample
-Example for the usage of appveyor. It is awesome
+# CI-Tests
+Example for the usage of 
+ [x] appveyor
+ [ ] GithubActions
 
 
-## Vorgehensweise
-
+## Vorgehensweise Appveyor
 * appveyor.yml erstellt
 * image fuer *Visual Studio 2017*
 * eigenes Build Skript erstellt
