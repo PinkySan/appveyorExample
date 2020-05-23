@@ -9,6 +9,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Setup pyhton
+      uses: actions/setup-python@v2
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install conan
+    - name: install conan dependencies
+      run: conan install . -if build
     - name: cmake
       run: cmake -S . -B build -D CMAKE_BUILD_TYPE=Debug
     - name: build
