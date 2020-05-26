@@ -18,7 +18,7 @@ jobs:
     - name: install conan dependencies
       run: conan install . -if build
     - name: cmake
-      run: cmake -S . -B build -D CMAKE_BUILD_TYPE=Release
+      run: cmake -S . -B build -DCMAKE_CONFIGURATION_TYPES=Release
     - name: build
       run: cmake --build build --parallel 10
     - name: test
