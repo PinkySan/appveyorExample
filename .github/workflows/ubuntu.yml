@@ -9,6 +9,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-16.04, ubuntu-18.04]
+        build_type: [Debug, Release]
 
     steps:
     - uses: actions/checkout@v1
@@ -21,9 +22,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install conan
     - name: install conan dependencies
-      run: conan install . -if build -s compiler.libcxx=libstdc++11
+      run: conan install . -if build -s compiler.libcxx=libstdc++11 -s build_type=${{matrix.build_type}}
     - name: cmake
-      run: cmake -S . -B build -D CMAKE_BUILD_TYPE=Debug
+      run: cmake -S . -B build -D CMAKE_BUILD_TYPE=${{matrix.build_type}}
     - name: build
       run: cmake --build build --parallel 10
     - name: test
