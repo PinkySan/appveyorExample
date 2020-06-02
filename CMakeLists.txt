@@ -3,6 +3,7 @@ project(AppVeyorExample LANGUAGES CXX)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_set_find_paths()
+set(CMAKE_CXX_STANDARD 11)
 
 add_library(HelloWorld STATIC hello.h hello.cpp)
 target_include_directories(HelloWorld PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
