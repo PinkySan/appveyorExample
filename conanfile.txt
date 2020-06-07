@@ -1,5 +1,5 @@
 [requires]
-gtest/1.10.0@_/_
+gtest/1.8.1@_/_
 
 [generators]
 cmake
