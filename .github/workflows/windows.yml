@@ -1,15 +1,14 @@
-name: Ubuntu
+name: Windows
 
 on: [push, pull_request]
 
 jobs:
   build:
-    name: Builder on ${{ matrix.os }} and ${{ matrix.build_type }}
-    runs-on: ${{ matrix.os }}
+    name: Builder on ${{ matrix.build_type }}
+    runs-on: windows-latest
     continue-on-error: true
     strategy:
       matrix:
-        os: [ubuntu-16.04, ubuntu-18.04]
         build_type: [Debug, Release]
 
     steps:
@@ -25,12 +24,11 @@ jobs:
     - name: Display versions
       run: |
         cmake --version | head -n 1
-        gcc --version | head -n 1
         conan --version | head -n 1
     - name: Setting up remotes
       run: conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
     - name: install conan dependencies
-      run: conan install . -if build -s compiler.libcxx=libstdc++11 -s build_type=${{matrix.build_type}}
+      run: conan install . -if build -s build_type=${{matrix.build_type}}
     - name: cmake
       run: cmake -S . -B build -D CMAKE_BUILD_TYPE=${{matrix.build_type}}
     - name: build
