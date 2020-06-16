@@ -28,7 +28,7 @@ jobs:
     - name: Setting up remotes
       run: conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
     - name: install conan dependencies
-      run: conan install . -if build -s build_type=${{matrix.build_type}}
+      run: conan install . -if build -s build_type=${{matrix.build_type}} -s compiler.version=15
     - name: cmake
       run: cmake -S . -B build -D CMAKE_BUILD_TYPE=${{matrix.build_type}}
     - name: build
