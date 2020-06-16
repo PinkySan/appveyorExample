@@ -32,6 +32,8 @@ jobs:
     - name: cmake
       run: cmake -S . -B build -D CMAKE_BUILD_TYPE=${{matrix.build_type}}
     - name: build
-      run: cmake --build build --parallel 10
+      run: cmake --build build --config ${{matrix.build_type}} --parallel 10
     - name: test
-      run: cd build ; ctest -j 10 --output-on-failure
+      run: | 
+        cd build
+        ctest -C ${{matrix.build_type}} -j 10 --output-on-failure
