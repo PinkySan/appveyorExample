@@ -10,8 +10,5 @@ jobs:
         steps:
         - name: Create Issue Branch
           uses: robvanderleek/create-issue-branch@master
-          with:
-            silent: false
-            autoCloseIssue: true
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
