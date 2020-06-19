@@ -1,0 +1,8 @@
+silent: false
+branches:
+  - label: enhancement
+    prefix: feature/
+  - label: bug
+    prefix: bugfix/
+  - label: good first issue
+    prefix: idea/
