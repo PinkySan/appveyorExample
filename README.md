@@ -23,6 +23,7 @@ Example for the usage of
 ### Status
 Branch|status
 ----|----
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bb48175739994c27ae83620cf8dfc7e0)](https://app.codacy.com/manual/PinkySan/CI-Example?utm_source=github.com&utm_medium=referral&utm_content=PinkySan/CI-Example&utm_campaign=Badge_Grade_Settings)
 master | [![Build status](https://ci.appveyor.com/api/projects/status/960mgtdgpo14mdj3/branch/master?svg=true)](https://ci.appveyor.com/project/PinkySan/appveyorexample/branch/master)
 
 ### Download
