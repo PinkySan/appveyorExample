@@ -1,9 +1,7 @@
-find_package(GTest REQUIRED)
-find_package(Threads REQUIRED)
-
-add_library(GTestWrapper main.cpp)
-target_link_libraries(GTestWrapper PUBLIC ${GTEST_LIBRARIES} Threads::Threads )
-target_include_directories(GTestWrapper PUBLIC ${GTEST_INCLUDE_DIRS})
+find_package(Catch2 REQUIRED)
+add_library(Catch2Wrapper INTERFACE)
+target_link_libraries(Catch2Wrapper INTERFACE Catch2::Catch2)
+target_compile_definitions(Catch2Wrapper INTERFACE CATCH_CONFIG_MAIN)
 
 add_subdirectory(hello)
 add_subdirectory(animal)
