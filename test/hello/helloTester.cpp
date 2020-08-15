@@ -6,7 +6,7 @@ TEST_CASE("success")
     CHECK(returnValue() == 42);
 }
 
-TEST_CASE("failure","[!mayfail]")
+TEST_CASE("failure")
 {
     CHECK(returnValue() == 17);
 }
