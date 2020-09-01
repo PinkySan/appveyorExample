@@ -1,12 +1,12 @@
-#include <gtest/gtest.h>
+#include <catch2/catch.hpp>
 #include <hello.h>
 
-TEST(first, success)
+TEST_CASE("success")
 {
-    EXPECT_EQ(returnValue(),42);
+    CHECK(returnValue() == 42);
 }
 
-TEST(first, failure)
+TEST_CASE("failure", "[!mayfail]")
 {
-    EXPECT_EQ(returnValue(),17);
+    CHECK(returnValue() == 17);
 }

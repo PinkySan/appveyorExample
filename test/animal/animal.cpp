@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
+#include <catch2/catch.hpp>
 
-TEST(Animal, success)
+TEST_CASE("Animal")
 {
-    EXPECT_EQ(42,42);
+    CHECK(42 == 42);
 }
