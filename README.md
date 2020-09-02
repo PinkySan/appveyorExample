@@ -1,7 +1,7 @@
 # CI-Tests
 Example for the usage of 
-- [x] appveyor
-- [ ] GithubActions
+-  [x] appveyor
+-  [ ] GithubActions
 
 
 ## Vorgehensweise Appveyor
