@@ -3,7 +3,6 @@ Example for the usage of
 -  [x] appveyor
 -  [ ] GithubActions
 
-
 ## Vorgehensweise Appveyor
 * appveyor.yml erstellt
 * image fuer *Visual Studio 2017*
