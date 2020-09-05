@@ -29,6 +29,7 @@ jobs:
         gcc --version | head -n 1
         conan --version | head -n 1
         conan profile show default
+        cat etc/lsb-release | grep "DISTRIB_DESCRIPTION"
     - name: Setting up remotes
       run: conan remote add catch2 https://api.bintray.com/conan/catchorg/Catch2
     - name: install conan dependencies
