@@ -10,7 +10,7 @@ Example for the usage of
 
 ## TODO appveyor
 
-- [x] installation *cmake --build . --target INSTALL*
+-   [x] installation *cmake --build . --target INSTALL*
 -   [x] Installationspaket zur Verfügung stellen **Heureka**
 -   [x] test erstellen
 -   [x] test auf basis von gtest
