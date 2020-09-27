@@ -8,10 +8,6 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-      - name: Install clang-tidy
-        run: sudo apt-get install clang-tidy
-      - name: Dispay clang-tidy version
-        run: clang-tidy --version
       - uses: actions/checkout@v2
       - name: Setup python
         uses: actions/setup-python@v2
@@ -22,11 +18,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install conan
           conan profile new default --detect
+          sudo apt-get install clang-tidy
       - name: Display versions
         run: |
           cmake --version | head -n 1
           gcc --version | head -n 1
           conan --version | head -n 1
+          clang-tidy --version | head -n 1
           conan profile show default
           cat /etc/lsb-release | grep "DISTRIB_DESCRIPTION"
       - name: Setting up remotes
@@ -35,4 +33,6 @@ jobs:
         run: conan install . -if build -s compiler.libcxx=libstdc++11 -s build_type=Release
       - name: cmake
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+      - name: run clang-tidy
+        run: python /usr/bin/run-clang-tidy -checks="*"
       
