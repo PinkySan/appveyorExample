@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Install clang-tidy
-        run: sudo apt-get install clang-tidy
+        run: sudo apt-get install clang-tidy-10
       - name: Dispay clang-tidy version
         run: clang-tidy --version
       
