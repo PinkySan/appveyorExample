@@ -6,7 +6,6 @@ jobs:
   build:
     name: Clang-Tidy Runner
     runs-on: ubuntu-20.04
-    continue-on-error: true
 
     steps:
     - uses: actions/checkout@v2
@@ -19,7 +18,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install conan
         conan profile new default --detect
-        apt-get install clang-tidy
+        sudo apt-get install clang-tidy
     - name: Display versions
       run: |
         cmake --version | head -n 1
