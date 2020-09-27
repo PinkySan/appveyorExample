@@ -34,5 +34,7 @@ jobs:
       - name: cmake
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
       - name: run clang-tidy
-        run: python /usr/bin/run-clang-tidy -checks="*"
+        run: |
+          cd build
+          python /usr/bin/run-clang-tidy -checks="*"
       
