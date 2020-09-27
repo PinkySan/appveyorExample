@@ -5,3 +5,4 @@ target_compile_definitions(Catch2Wrapper INTERFACE CATCH_CONFIG_MAIN)
 
 add_subdirectory(hello)
 add_subdirectory(animal)
+add_subdirectory(clang-errors)
