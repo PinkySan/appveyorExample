@@ -16,9 +16,13 @@ void misc_string_integer_assignment()
     s = x;
 }
 
+struct Foo
+{
+	int value = 3;
+};
+
 void misc_uniqueptr_reset_release()
 {
-    struct Foo;
     std::unique_ptr<Foo> x, y;
     x.reset(y.release());
 }
