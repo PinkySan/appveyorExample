@@ -2,5 +2,6 @@
 
 TEST_CASE("Animal")
 {
-    CHECK(42 == 42);
+    constexpr int magicvalue = 42;
+    CHECK(42 == magicvalue);
 }
