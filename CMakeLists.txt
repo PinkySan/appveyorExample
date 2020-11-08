@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(AppVeyorExample LANGUAGES CXX)
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_set_find_paths()
 set(CMAKE_CXX_STANDARD 11)
 
 add_library(HelloWorld STATIC hello.h hello.cpp)
