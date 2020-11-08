@@ -34,7 +34,7 @@ jobs:
       - name: run clang-tidy
         run: |
           cd build
-          python /usr/bin/run-clang-tidy --format-style=file > clang-output.txt
+          python /usr/bin/run-clang-tidy -p . > clang-output.txt
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.0
         with: 
