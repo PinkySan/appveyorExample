@@ -39,5 +39,8 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.0
         with: 
-          path: ./build/clang-output.txt  
-      
+          path: ./build/clang-output.txt
+      - name: Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@1.1.0
+        with:
+          project-token: ${{ secrets.CODACY_PATTERN }}
