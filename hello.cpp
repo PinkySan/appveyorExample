@@ -1,6 +1,8 @@
 #include <iostream>
 #include "hello.h"
 
+constexpr int MAGIC_NUMBER = 42;
+
 void sayHello()
 {
     std::cout << "Hello World" << std::endl;
@@ -8,5 +10,5 @@ void sayHello()
 
 int returnValue()
 {
-    return 42;
+    return MAGIC_NUMBER;
 }

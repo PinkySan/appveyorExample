@@ -1,0 +1,1 @@
+add_library(clang-errors STATIC clang-errors.h clang-errors.cpp)
