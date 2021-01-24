@@ -1,10 +1,10 @@
 name: Build
 on:
   push:
-    branches:
-      - master
-  pull_request:
-    types: [opened, synchronize, reopened]
+  #   branches:
+  #     - master
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
 jobs:
   sonarcloud:
     name: SonarCloud
@@ -18,5 +18,5 @@ jobs:
         run: mkdir .sonar
         env: SONAR_SCANNER_VERSION=4.2.0.1873
         env: SONAR_SCANNER_HOME=$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
-        
+
         
