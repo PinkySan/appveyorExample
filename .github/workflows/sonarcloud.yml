@@ -15,9 +15,9 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: set variables
         run:
-          echo home $HOME
-          echo SONAR_SCANNER_VERSION $SONAR_SCANNER_VERSION
-          echo SONAR_SCANNER_HOME $SONAR_SCANNER_HOME
+          echo -n home $HOME
+          echo -n SONAR_SCANNER_VERSION $SONAR_SCANNER_VERSION
+          echo -n SONAR_SCANNER_HOME $SONAR_SCANNER_HOME
         env:
           SONAR_SCANNER_VERSION: 4.2.0.1873
           SONAR_SCANNER_HOME: $HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
