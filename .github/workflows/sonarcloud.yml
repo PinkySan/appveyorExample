@@ -1,4 +1,4 @@
-name: Build
+name: SonarCloud-Runner
 on:
   push:
   #   branches:
@@ -16,7 +16,7 @@ jobs:
       - name: set variables
         working-directory: ./home
         run: mkdir .sonar
-        env: SONAR_SCANNER_VERSION=4.2.0.1873
-        env: SONAR_SCANNER_HOME=$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
+        env: SONAR_SCANNER_VERSION: 4.2.0.1873
+        env: SONAR_SCANNER_HOME: $HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
 
         
