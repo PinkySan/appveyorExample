@@ -15,9 +15,11 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: set variables
         working-directory: ./home
-        run: mkdir .sonar
+        run: mkdir $HOME/.sonar
+        run: cd
+        run: echo $middle_name and $SONAR_SCANNER_VERSION
         env:
-          FIRST_NAME: Mona
+          SONAR_SCANNER_VERSION: 4.2.0.1873
           middle_name: The
           Last_Name: Octocat
 
