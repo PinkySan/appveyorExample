@@ -16,6 +16,8 @@ jobs:
       - name: set variables
         working-directory: ./home
         run: mkdir .sonar
-        env:  SONAR_SCANNER_VERSION: '4.2.0.1873'
-              SONAR_SCANNER_HOME: $HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
+        env:
+          FIRST_NAME: Mona
+          middle_name: The
+          Last_Name: Octocat
 
