@@ -18,9 +18,8 @@ jobs:
         run:
           echo home $HOME
           echo SONAR_SCANNER_VERSION $SONAR_SCANNER_VERSION
-          echho SONAR_SCANNER_HOME $SONAR_SCANNER_HOME
+          echo SONAR_SCANNER_HOME $SONAR_SCANNER_HOME
         env:
           SONAR_SCANNER_VERSION: 4.2.0.1873
           SONAR_SCANNER_HOME: $HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
-          Last_Name: Octocat
 
