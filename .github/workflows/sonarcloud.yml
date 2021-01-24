@@ -16,8 +16,7 @@ jobs:
       - name: set variables
         working-directory: ./home
         run: 
-          mkdir $HOME/.sonar
-          echo $middle_name and $SONAR_SCANNER_VERSION
+          echo $middle_name and $SONAR_SCANNER_VERSION and $HOME
         env:
           SONAR_SCANNER_VERSION: 4.2.0.1873
           middle_name: The
