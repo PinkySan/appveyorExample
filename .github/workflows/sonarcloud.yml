@@ -13,12 +13,17 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: set variables
+      - name: set environment variables
         run:
-          echo -n home $HOME
-          echo -n SONAR_SCANNER_VERSION $SONAR_SCANNER_VERSION
-          echo -n SONAR_SCANNER_HOME $SONAR_SCANNER_HOME
+          echo home $HOME
         env:
           SONAR_SCANNER_VERSION: 4.2.0.1873
           SONAR_SCANNER_HOME: $HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
+      - name: download and extract Runner
+        run: 
+          curl -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip 
+          unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
+        env:
+          PATH: $SONAR_SCANNER_HOME/bin:$PATH
+          SONAR_SCANNER_OPTS: "-server"
 
