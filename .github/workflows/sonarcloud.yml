@@ -14,7 +14,6 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: set variables
-        working-directory: $HOME
         run:
           echo home $HOME
           echo SONAR_SCANNER_VERSION $SONAR_SCANNER_VERSION
