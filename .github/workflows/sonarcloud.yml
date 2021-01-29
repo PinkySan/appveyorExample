@@ -16,6 +16,7 @@ jobs:
       - name: install system relevant dependencies
         run: sudo apt install curl unzip       
       - name: set environment variables
+        id: set_environment_variable
         run:
           echo home $HOME
         env:
@@ -26,6 +27,7 @@ jobs:
           curl --version
           unzip --version
       - name: download and extract Runner
+        if: steps.set_environment_variable.conclusion = success
         run: 
           curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip 
         env:
