@@ -27,9 +27,8 @@ jobs:
           curl --version
           unzip --version
       - name: download and extract Runner
-        if: steps.set_environment_variable.conclusion == success
         run: 
-          curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip 
+          curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip 
         env:
           PATH: $SONAR_SCANNER_HOME/bin:$PATH
           SONAR_SCANNER_OPTS: "-server"
