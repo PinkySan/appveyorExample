@@ -27,7 +27,8 @@ jobs:
           curl --version
           unzip --version
       - name: download and extract Runner
-        run: 
+        run:
+          curl --help
           curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip 
         env:
           PATH: $SONAR_SCANNER_HOME/bin:$PATH
