@@ -12,9 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: install system relevant dependencies
-        run: sudo apt install curl unzip       
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis    
       - name: set environment variables
         id: set_environment_variable
         run:
@@ -28,8 +26,8 @@ jobs:
           unzip --version
       - name: download and extract Runner
         run:
-          curl --help
-          curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip 
+          curl -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
+          unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
         env:
           PATH: $SONAR_SCANNER_HOME/bin:$PATH
           SONAR_SCANNER_OPTS: "-server"
