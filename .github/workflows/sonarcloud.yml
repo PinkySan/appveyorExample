@@ -45,5 +45,6 @@ jobs:
       - name: cmake
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_TOOLCHAIN_FILE:PATH=./build/conan_paths.cmake
       - name: build
-        run: cmake --build build --parallel 10
+        run: build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory cmake --build build/ --config Release
+        env: PATH=$HOME/.sonar/build-wrapper-linux-x86:$PATH
 
