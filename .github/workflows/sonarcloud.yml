@@ -28,6 +28,7 @@ jobs:
         run: |
           curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip
           unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
+          echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
 
       - name: Setup python
         uses: actions/setup-python@v2
@@ -46,5 +47,4 @@ jobs:
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_TOOLCHAIN_FILE:PATH=./build/conan_paths.cmake
       - name: build
         run: build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory cmake --build build/ --config Release
-        env: PATH=$HOME/.sonar/build-wrapper-linux-x86:$PATH
 
