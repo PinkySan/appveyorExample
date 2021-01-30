@@ -22,8 +22,10 @@ jobs:
         run: |
           curl -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
           unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
+          echo "$SONAR_SCANNER_HOME/bin" >> $GITHUB_PATH
         env:
           SONAR_SCANNER_VERSION: 4.2.0.1873
+          SONAR_SCANNER_HOME: $HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
       - name: download and extract the build-wrapper
         run: |
           curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip
@@ -47,4 +49,6 @@ jobs:
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_TOOLCHAIN_FILE:PATH=./build/conan_paths.cmake
       - name: build
         run: build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory cmake --build build/ --config Release
+      - name: run sonarscanner
+        run: sonar-scanner
 
