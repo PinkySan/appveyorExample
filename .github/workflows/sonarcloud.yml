@@ -48,7 +48,7 @@ jobs:
           echo $PATH
           echo $SONAR_SCANNER_VERSION
           echo $SONAR_SCANNER_HOME
-          /home/runner/.sonar/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner --version
+          $SONAR_SCANNER_HOME/bin/sonar-scanner --version
         #env:
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
