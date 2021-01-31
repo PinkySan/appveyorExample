@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-18.04
     env: 
       SONAR_SCANNER_VERSION: 4.2.0.1873
-      SONAR_SCANNER_HOME: $HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
     steps:
       - uses: actions/checkout@v2
         with:
@@ -22,7 +21,7 @@ jobs:
         run: |
           curl -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
           unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
-          echo "$SONAR_SCANNER_HOME" >> $GITHUB_PATH
+          echo "$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux" >> $GITHUB_PATH
       - name: download and extract the build-wrapper
         run: |
           curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip
