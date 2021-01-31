@@ -22,10 +22,12 @@ jobs:
         run: |
           curl -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
           unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
+          echo "$SONAR_SCANNER_HOME" >> $GITHUB_PATH
       - name: download and extract the build-wrapper
         run: |
           curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip
           unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
+          echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
       # - name: Setup python
       #   uses: actions/setup-python@v2
       #   with:
@@ -46,9 +48,7 @@ jobs:
       - name: run sonarscanner
         run: |
           echo $PATH
-          echo $SONAR_SCANNER_VERSION
-          echo $SONAR_SCANNER_HOME
-          $SONAR_SCANNER_HOME/bin/sonar-scanner --version
+          /home/runner/.sonar/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner --version
         #env:
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
