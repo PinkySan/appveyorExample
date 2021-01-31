@@ -45,9 +45,7 @@ jobs:
       - name: build
         run: build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory cmake --build build/ --config Release
       - name: run sonarscanner
-        run: |
-          echo $PATH
-          sonar-scanner
+        run: sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
