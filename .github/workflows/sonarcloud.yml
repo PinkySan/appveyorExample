@@ -10,7 +10,7 @@ jobs:
     name: SonarCloud
     runs-on: ubuntu-18.04
     env: 
-      SONAR_SCANNER_VERSION: 4.2.0.1873
+      SONAR_SCANNER_VERSION: 4.6.0.2311
     steps:
       - name: create folder
         run: mkdir $HOME/.sonar/
