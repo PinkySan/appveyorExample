@@ -26,7 +26,6 @@ jobs:
         run: |
           curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip
           unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
-          echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
       # - name: Setup python
       #   uses: actions/setup-python@v2
       #   with:
@@ -43,13 +42,13 @@ jobs:
       # - name: cmake
       #   run: cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_TOOLCHAIN_FILE:PATH=./build/conan_paths.cmake
       # - name: build
-      #   run: build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory cmake --build build/ --config Release
+      #   run: /home/runner/.sonar/build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory cmake --build build/ --config Release
       - name: run sonarscanner
         run: |
-          echo $GITHUB_PATH
+          echo $PATH
           echo $SONAR_SCANNER_VERSION
           echo $SONAR_SCANNER_HOME
-          $SONAR_SCANNER_HOME/bin/sonar-scanner --version
+          /home/runner/.sonar/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner --version
         #env:
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
