@@ -21,7 +21,7 @@ jobs:
         run: |
           curl -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
           unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
-          echo "$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux" >> $GITHUB_PATH
+          echo "$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux/bin" >> $GITHUB_PATH
       - name: download and extract the build-wrapper
         run: |
           curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip
@@ -47,7 +47,7 @@ jobs:
       - name: run sonarscanner
         run: |
           echo $PATH
-          /home/runner/.sonar/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner --version
+          sonar-scanner --version
         #env:
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
