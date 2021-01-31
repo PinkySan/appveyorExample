@@ -9,6 +9,7 @@ jobs:
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-18.04
+    env: SONAR_SCANNER_VERSION: 4.2.0.1873
     steps:
       - uses: actions/checkout@v2
         with:
@@ -24,7 +25,6 @@ jobs:
           unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
           echo "$SONAR_SCANNER_HOME/bin" >> $GITHUB_PATH
         env:
-          SONAR_SCANNER_VERSION: 4.2.0.1873
           SONAR_SCANNER_HOME: $HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
       - name: download and extract the build-wrapper
         run: |
