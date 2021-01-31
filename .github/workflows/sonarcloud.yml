@@ -31,7 +31,6 @@ jobs:
           curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip
           unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
           echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
-
       - name: Setup python
         uses: actions/setup-python@v2
         with:
@@ -41,7 +40,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install conan
           conan profile new default --detect
-          echo $GITHUB_PATH
       - name: Setting up remotes
         run: conan remote add catch2 https://api.bintray.com/conan/catchorg/Catch2
       - name: install conan dependencies
@@ -53,4 +51,7 @@ jobs:
       - name: run sonarscanner
         run: |
           sonar-scanner -v
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
