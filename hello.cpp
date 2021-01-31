@@ -12,3 +12,15 @@ int returnValue()
 {
     return MAGIC_NUMBER;
 }
+
+int& returnInvalidReference()
+{
+    int value = 42;
+    return value;
+}
+
+int* returnInvalidPointer()
+{
+    int value = 42;
+    return &value;
+}
