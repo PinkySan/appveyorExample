@@ -38,5 +38,4 @@ jobs:
     - name: test
       run: | 
         cd build
-        mkdir testresults
-        ctest -C ${{matrix.build_type}} -j 4 --output-on-failure || exit 0
+        ctest -C ${{matrix.build_type}} -j 4 --output-on-failure || EXIT 0

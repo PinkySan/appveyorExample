@@ -41,5 +41,4 @@ jobs:
     - name: test
       run: |
         cd build
-        mkdir testresults
         ctest -j 4 --output-on-failure || exit 0
