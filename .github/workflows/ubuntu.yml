@@ -37,6 +37,9 @@ jobs:
     - name: cmake
       run: cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=${{matrix.build_type}} -DCMAKE_TOOLCHAIN_FILE:PATH=./build/conan_paths.cmake
     - name: build
-      run: cmake --build build --parallel 10
+      run: cmake --build build --parallel 4
     - name: test
-      run: cd build ; ctest -j 10 --output-on-failure
+      run: |
+        cd build
+        mkdir testresults
+        ctest -j 4 --output-on-failure -D ContinuousTest
