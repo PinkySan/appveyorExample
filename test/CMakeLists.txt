@@ -1,3 +1,4 @@
+include(CTest)
 find_package(Catch2 REQUIRED)
 add_library(Catch2Wrapper INTERFACE)
 target_link_libraries(Catch2Wrapper INTERFACE Catch2::Catch2)
