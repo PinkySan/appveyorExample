@@ -1,6 +1,2 @@
 build*
-install/
-.vscode/
-.vs
-CMakeSettings.json
-scripts/*
+.vscode
