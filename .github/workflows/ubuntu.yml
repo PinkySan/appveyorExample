@@ -42,3 +42,8 @@ jobs:
       run: |
         cd build
         ctest -j 4 --output-on-failure || exit 0
+      - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.2
+      with:
+          name: Testresults_${{matrix.build_type}}
+          path: build/testresult
