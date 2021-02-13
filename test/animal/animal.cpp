@@ -3,5 +3,5 @@
 TEST_CASE("Animal")
 {
     constexpr int magicvalue = 42;
-    CHECK(42 == magicvalue);
+    CHECK(40 == magicvalue);
 }
