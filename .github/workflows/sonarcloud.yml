@@ -48,9 +48,10 @@ jobs:
         run: |
           cd build
           ctest -j 4 --output-on-failure || exit 0
-          ls -alh build/testresult
       - name: run sonarscanner
-        run: sonar-scanner -X
+        run:  |
+          ls -alh build/testresult
+          sonar-scanner -X
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
