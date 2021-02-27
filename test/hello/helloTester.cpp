@@ -1,4 +1,4 @@
-#include <catch2/catch.hpp>
+#include <catch2Wrapper.h>
 #include <hello.h>
 
 TEST_CASE("success")
