@@ -44,6 +44,10 @@ jobs:
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_TOOLCHAIN_FILE:PATH=./build/conan_paths.cmake
       - name: build
         run: build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory cmake --build build/ --config Release
+      - name: test
+        run: |
+          cd build
+          ctest -j 4 --output-on-failure || exit 0
       - name: run sonarscanner
         run: sonar-scanner
         env:
