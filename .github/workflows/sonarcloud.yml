@@ -48,6 +48,7 @@ jobs:
         run: |
           cd build
           ctest -j 4 --output-on-failure || exit 0
+          ls -alh build/testresult
       - name: run sonarscanner
         run: sonar-scanner -X
         env:
