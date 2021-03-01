@@ -10,3 +10,9 @@ TEST_CASE("failure", "[!mayfail]")
 {
     CHECK(returnValue() == 17);
 }
+
+
+TEST_CASE("def_failure")
+{
+    CHECK(returnValue() == 17);
+}
