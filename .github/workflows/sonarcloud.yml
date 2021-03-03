@@ -51,8 +51,13 @@ jobs:
       - name: run sonarscanner
         run:  |
           ls -alh build/testresult
-          sonar-scanner -X
+          sonar-scanner -X > build/testresult/output.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: Testresults_${{matrix.build_type}}
+          path: build/testresult
 
