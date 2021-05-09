@@ -52,3 +52,4 @@ jobs:
       if: always()
       with:
           files: build/testresult/*.xml
+          check_run_annotations: all tests, skipped tests
