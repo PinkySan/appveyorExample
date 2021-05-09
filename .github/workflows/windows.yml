@@ -6,10 +6,14 @@ jobs:
   build:
     name: Builder on ${{ matrix.build_type }}
     runs-on: windows-latest
-    continue-on-error: true
+    continue-on-error: false
+    defaults:
+      run:
+        shell: bash
+
     strategy:
       matrix:
-        build_type: [Debug, Release]
+        build_type: [Release]
 
     steps:
     - uses: actions/checkout@v2
@@ -34,8 +38,20 @@ jobs:
     - name: cmake
       run: cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=${{matrix.build_type}} -DCMAKE_TOOLCHAIN_FILE:PATH=./build/conan_paths.cmake
     - name: build
-      run: cmake --build build --config ${{matrix.build_type}} --parallel 10
+      run: cmake --build build --config ${{matrix.build_type}} --parallel 4
     - name: test
       run: | 
         cd build
-        ctest -C ${{matrix.build_type}} -j 10 --output-on-failure
+        ctest -C ${{matrix.build_type}} -j 4 --output-on-failure || exit 0
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.2
+      with:
+          name: Testresults_${{matrix.build_type}}
+          path: build/testresult
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v1
+      if: always()
+      with:
+          files: build/testresult/*.xml
+          check_run_annotations: all tests, skipped tests
+          check_name: Test results windows

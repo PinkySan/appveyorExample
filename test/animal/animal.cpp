@@ -1,7 +1,7 @@
-#include <catch2/catch.hpp>
+#include <catch2Wrapper.h>
 
 TEST_CASE("Animal")
 {
     constexpr int magicvalue = 42;
-    CHECK(42 == magicvalue);
+    CHECK(40 == magicvalue);
 }

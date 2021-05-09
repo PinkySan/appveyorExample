@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     name: Clang-Tidy Runner
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
@@ -39,5 +39,29 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.0
         with: 
-          path: ./build/clang-output.txt  
+          path: ./build/clang-output.txt
+          name: clang-results
+          
+  uploadClangTidy:
+    runs-on: ubuntu-20.04
+    needs: [build]
+    steps:
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.0.9
+        with:
+          name: clang-results
+      - name: Install dependencies
+        run: |
+          sudo apt-get install clang-tidy
+          git clone https://github.com/PSPDFKit-labs/clang-tidy-to-junit.git
+          ls -alh
+      
+          
+        
+      
+    
       

@@ -1,7 +1,7 @@
 build*
-.vscode
+.*
+!.github
 install/
-.vscode/
-.vs
 CMakeSettings.json
 scripts/*
+!.gitignore
